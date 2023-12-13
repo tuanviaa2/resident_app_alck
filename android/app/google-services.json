@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "520492934679",
+    "firebase_url": "https://qlck-68377-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "qlck-68377",
+    "storage_bucket": "qlck-68377.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520492934679:android:7bc45bdebf82b7d4019e52",
+        "android_client_info": {
+          "package_name": "com.chatapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnTK2GXhgX4J-p_2Tt-MkwILoa5os8UHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
