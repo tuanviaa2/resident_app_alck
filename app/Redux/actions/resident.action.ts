@@ -51,11 +51,11 @@ interface AddPaymentPayload {
 }
 
 export const addPayment = createAsyncThunk("room/addPayment", async ({
-                                                                       paymentName,
-                                                                       amount,
-                                                                       residentId,
-                                                                       addPayment2
-                                                                     }: AddPaymentPayload, { rejectWithValue }) => {
+  paymentName,
+  amount,
+  residentId,
+  addPayment2
+}: AddPaymentPayload, { rejectWithValue }) => {
   try {
     console.log(paymentName, amount, residentId);
     const response = await AxiosInstance().put("user/addPayment/" + residentId, {
@@ -71,13 +71,13 @@ export const addPayment = createAsyncThunk("room/addPayment", async ({
 });
 
 interface MaskPaymentPayload {
-  paymentId:string,
+  paymentId: string,
   residentId: string,
   updatePayment: (payment: Bill[]) => void;
 }
-export const maskPaymentIsPayment = createAsyncThunk("user/maskPayment", async ({paymentId,residentId,updatePayment}:MaskPaymentPayload, { rejectWithValue }) => {
+export const maskPaymentIsPayment = createAsyncThunk("user/maskPayment", async ({ paymentId, residentId, updatePayment }: MaskPaymentPayload, { rejectWithValue }) => {
   try {
-    const response = await AxiosInstance().put("user/maskIsPayment/" + residentId,{
+    const response = await AxiosInstance().put("user/maskIsPayment/" + residentId, {
       paymentId
     });
     console.log(response.data.payment);
@@ -92,7 +92,7 @@ export const maskPaymentIsPayment = createAsyncThunk("user/maskPayment", async (
 
 export const deleteResident = createAsyncThunk("room/delete", async (id: string, { rejectWithValue }) => {
   try {
-    const response = await AxiosInstance().delete("user/delete/"+id);
+    const response = await AxiosInstance().delete("user/delete/" + id);
     return response.data;
   } catch (error: any) {
     console.log(error);
@@ -100,7 +100,7 @@ export const deleteResident = createAsyncThunk("room/delete", async (id: string,
   }
 });
 
-export const getAllResident = createAsyncThunk("room/getAllUser", async (setResident:(resident:ResidentInfo[])=>void, { rejectWithValue }) => {
+export const getAllResident = createAsyncThunk("room/getAllUser", async (setResident: (resident: ResidentInfo[]) => void, { rejectWithValue }) => {
   try {
     const response = await AxiosInstance().get("user");
     setResident(response.data.users);
@@ -111,12 +111,12 @@ export const getAllResident = createAsyncThunk("room/getAllUser", async (setResi
   }
 });
 
-export const sendNoti = createAsyncThunk("room/sedNoti", async ({noti,id}:{noti:string,id:string}, { rejectWithValue }) => {
+export const sendNoti = createAsyncThunk("room/sedNoti", async ({ noti, id }: { noti: string, id: string }, { rejectWithValue }) => {
   try {
-    const response = await AxiosInstance().post("user/addNotification",{
-      content:noti,
-      residentId:id,
-      time:new Date()
+    const response = await AxiosInstance().post("user/addNotification", {
+      content: noti,
+      residentId: id,
+      time: new Date()
     });
     return response.data;
   } catch (error: any) {

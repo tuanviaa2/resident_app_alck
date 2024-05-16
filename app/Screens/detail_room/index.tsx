@@ -12,10 +12,13 @@ import { Bill, ResidentInfo } from "../../global";
 const DetailRoomScreen = () => {
   const { colors } = useTheme();
   const styles = useStyles(colors);
-  const dispatch = useAppDispatch();
+
+  //lấy thông tin của cư dân đã đăng nhập 
+  const dispatch = useAppDispatch(); //cho phép để lấy một hàm dispatch từ Redux Toolkit
   const {user}= useAppSelector(state => {
     return state.root.user
   })
+  //** 
   const [residentInfo, setResidentInfo] = useState<ResidentInfo>(user);
   return <AppScreenContainer>
     <AppHeader
@@ -26,9 +29,15 @@ const DetailRoomScreen = () => {
         style={styles.avatar}
         source={{ uri: !residentInfo.portrait_url ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzhG23F5VXoykW672-NhGsqLrgfnij-Z-ayCUs6Gc&s" : residentInfo.portrait_url }} />
       <Text style={styles.fullName}>{user.fullName}</Text>
+     {
+      // danh sach da thanh toan
+     }
       <ListPayment
         isPayment
         paymentInfo={residentInfo.payments.filter(paymentInfo => paymentInfo.isPayment)} />
+       {
+      // danh sach chua thanh toan
+     }
       <ListPayment
         isPayment={false}
         paymentInfo={residentInfo.payments.filter(paymentInfo => !paymentInfo.isPayment)} />

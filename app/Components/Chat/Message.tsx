@@ -44,7 +44,7 @@ const Message = ({ isMine, message, time, name, avatar }: ChatMessage_Prop) => {
         {!isMine && <View>
           <Text style={styles.name}>{name}</Text>
           <Image
-            source={{ uri: avatar }}
+            source={{ uri: avatar.length == 0 ?  'https://t4.ftcdn.net/jpg/05/49/98/39/360_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg' : avatar }}
             style={{
               width: 50,
               height: 50,

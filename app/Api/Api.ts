@@ -21,12 +21,12 @@ class API {
     this.messagesRef = this.reference.ref("/messages/1").orderByChild("sendTime");
   }
 
-  // SignUp Method
+  // SignUp Method dk ng 
   async signupUser(payload: UserModel): Promise<void> {
     return this.reference.ref(`/users/${payload.id}`).set(payload);
   }
 
-  // Login Method
+  // Login Method thêm ng dùng đăng nhập
   async loginUser(email: string): Promise<UserModel> {
     return this.reference
       .ref("/users/")

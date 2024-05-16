@@ -13,7 +13,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import axiosInstance from "../../Utils/AxiosInstance";
 import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import { updateNoti } from "../../Redux/slices/user.slice";
-
+/**
+  Khi chạy app 
+  -> lấy thông báo của người dùng đang đăng nhập từ sever ( ở màn home)
+  -> đếm sl tb chưa đọc 
+  -> bấm vào icon tb thì mở mh tb và danh sách các thông báo
+  -> bấm vào item trong list sẽ đánh dấu tb đó là đọc rồi ở local trước rồi gửi lên sever sau
+ */
 const NotiScreen = () => {
   const { user } = useAppSelector(state => {
     return state.root.user;
@@ -21,9 +27,12 @@ const NotiScreen = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const { colors } = useTheme();
   const dispatch = useAppDispatch();
+  // khi bấm vào sẽ đánh dấu thông báo đó là đã đọc rồi 
   const readNoti = (id: string) => {
+   //gửi thông báo đến redux sửa dữ liệu và đánh dấu đã đọc ở local
     dispatch(updateNoti(id));
-    axiosInstance().put("/user/readNoti" + user.personal_identification_number, { notiId: id });
+    // gửi lên sever đánh dấu thông báo là đã đọc rồi
+    axiosInstance().put("/user/readNoti/" + user.personal_identification_number, { notiId: id });
   };
   const styles = useStyles(colors);
   return <AppScreenContainer>

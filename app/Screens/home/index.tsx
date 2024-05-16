@@ -60,13 +60,17 @@ const HomeScreen = () => {
       image: images.menuItem4
     }
   ];
+
+  // lấy thông tin của người dùng đã đăng nhập vào app 
   const { user } = useAppSelector(state => {
     return state.root.user;
   }) as { user: ResidentInfo };
+
+  // đếm xem có bnhiu thông báo chưa đọc
   const getNoti = () => {
     let i = 0;
     user?.notifications?.forEach(item => {
-      if (!item.isReading) {
+      if (item.isReading==false) {
         i++;
       }
     });

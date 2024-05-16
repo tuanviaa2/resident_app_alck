@@ -15,6 +15,7 @@ export const userSlice = createSlice({
   name: SLICE_NAME.USER,
   initialState,
   reducers: {
+    // đánh dấu tb là đã đọc
     updateNoti: (state, action) => {
       const  notiId  = action.payload;
       console.log(notiId)
